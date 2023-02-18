@@ -1,6 +1,6 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  post 'auth/sign_in', to: 'auth#sign_in'
+  post 'auth/sign_up', to: 'auth#sign_up'
 end
