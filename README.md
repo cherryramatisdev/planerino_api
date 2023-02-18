@@ -1,24 +1,18 @@
-# README
+# Planerino API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Original Reference: <https://planerino.fly.dev>
 
-Things you may want to cover:
+## Why I'm backing away from monolith?
+`Planerino` is a project for me to learn above all things, so I'm splitting into an API with multiple frontends so I can apply more knowledge.
 
-* Ruby version
+**Goals**
 
-* System dependencies
+1. Define a more backend centric architecture(based on DDD)
+2. Write as much tests as possible (both unit and integration)
+3. Become more skillable in rails for APIs.
 
-* Configuration
+**Goals that I'll achieve with this project**
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Write frontend in elm to learn more about functional programming.
+2. Write a discord bot to register and query debits.
+3. (Possibly) Write a telegram bot for alerts and stuff.
