@@ -3,8 +3,11 @@
 module Actions
   module Auth
     class SignInAction
+      def initialize
+        @repository = UserRepository.new
+      end
       def call(email:, password:)
-        user = User.find_by(email:)
+        user = @repository.find_by_email(email)
 
         return { status: 400, error: 'Invalid email or password' } if user.nil?
 
