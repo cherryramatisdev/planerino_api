@@ -20,4 +20,23 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
 
     assert_not sut['error'].empty?
   end
+
+  test 'should create new user with correct params' do
+    post auth_sign_up_url, params: { name: 'test', email: 'test@test.com', password: 'test', password_confirmation: 'test' }
+    assert_response :success
+
+    sut = ActiveSupport::JSON.decode @response.body
+
+    assert sut['name'] == 'test'
+    assert sut['email'] == 'test@test.com'
+  end
+
+  test 'should not create a new user with wrong params' do
+    post auth_sign_up_url, params: { name: 'test' }
+    assert_response :bad_request
+
+    sut = ActiveSupport::JSON.decode @response.body
+
+    assert_not sut['error'].empty?
+  end
 end
