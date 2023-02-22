@@ -3,9 +3,10 @@
 module Actions
   module Auth
     class SignInAction
-      def initialize
-        @repository = UserRepository.new
+      def initialize(user_repository = UserRepository.new)
+        @repository = user_repository
       end
+
       def call(email:, password:)
         user = @repository.find_by_email(email)
 
