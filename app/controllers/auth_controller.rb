@@ -2,12 +2,14 @@
 
 require_relative '../actions/auth/sign_in'
 require_relative '../actions/auth/sign_up'
+require_relative '../actions/auth/handle_jwt'
 
 class AuthController < ApplicationController
   def initialize
     super
     @sign_in_action = Actions::Auth::SignInAction.new
     @sign_up_action = Actions::Auth::SignUpAction.new
+    @handle_jwt = Actions::Auth::HandleJwtAction.new
   end
 
   def sign_in
@@ -17,14 +19,17 @@ class AuthController < ApplicationController
 
     return render json: { error: }, status: status unless error.nil?
 
-    render json: user.to_json, status:
+    token = @handle_jwt.encode_user_email(user_email: user[:email])
+
+    render json: { token: }, status:
   end
 
   def sign_up
-    status, error, user = @sign_up_action.call(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation]).values_at(:status, :error, :user)
+    result = @sign_up_action.call(name: params[:name], email: params[:email], password: params[:password],
+                                  password_confirmation: params[:password_confirmation])
 
-    return render json: { error: }, status: status unless error.nil?
+    return render json: { error: result[:error] }, status: result[:status] unless result[:error].nil?
 
-    render json: user.to_json, status:
+    render json: result[:user].to_json, status: result[:status]
   end
 end
