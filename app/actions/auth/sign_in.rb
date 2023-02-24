@@ -8,7 +8,7 @@ module Actions
       end
 
       def call(email:, password:)
-        user = @repository.find_by_email(email)
+        user = @repository.find_by_email(email:)
 
         return { status: 400, error: 'Invalid email or password' } if user.nil?
 
