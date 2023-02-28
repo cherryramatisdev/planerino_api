@@ -15,8 +15,6 @@ class YearController < ApplicationController
   def create
     user = @handle_jwt.decode_into_user(token: request.headers['Authorization'])
 
-    p user
-
     result = @create_year_action.call(name: params[:name], user:)
 
     return render json: { error: result[:error] }, status: result[:status] unless result[:error].nil?
