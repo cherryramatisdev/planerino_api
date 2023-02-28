@@ -11,7 +11,7 @@ module Actions
       # @param user User
       # @returns { status: Integer, error: String | NilClass }
       def call(name:, user:)
-        return { status: 500, error: 'Internal server error' } if user.nil?
+        return { status: 500, error: 'Internal Server Error' } if user.nil?
 
         year = @year_repository.create(name:, user:)
 

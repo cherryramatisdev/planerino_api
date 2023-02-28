@@ -13,13 +13,13 @@ module Actions
       def call(year_id:)
         year = @year_repository.find_by_id(id: year_id)
 
-        return { status: 500, error: 'Internal server error' } if year.nil?
+        return { status: 500, error: 'Internal Server Error' } if year.nil?
 
         bulk_insert_result = @month_repository.create_all_months_in_a_year(year:)
 
-        return { status: 500, error: 'Internal server error' } if bulk_insert_result.nil?
+        return { status: 500, error: 'Internal Server Error' } if bulk_insert_result.nil?
 
-        { status: 200, error: nil }
+        { status: 204, error: nil }
       end
     end
   end
