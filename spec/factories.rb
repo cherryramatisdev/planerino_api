@@ -1,23 +1,22 @@
 # frozen_string_literal: true
 
-password = Faker::Alphanumeric.alpha(number: 10)
+password = Faker::Internet.password
 
 FactoryBot.define do
-  factory :month do
-    name { "MyString" }
-    year { nil }
-    user { nil }
+  factory :user do
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
+    password { password }
+    password_confirmation { password }
   end
 
   factory :year do
-    name { "MyString" }
-    user { nil }
+    name { Faker::Date.between(from: 10.years.ago, to: Date.today).year.to_s }
+    user
   end
 
-  factory(:user) do
-    email { Faker::Internet.email }
+  factory :month do
     name { Faker::Name.name }
-    password { password }
-    password_confirmation { password }
+    year
   end
 end
