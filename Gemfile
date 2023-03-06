@@ -50,3 +50,5 @@ group :development do
 end
 
 gem "jwt", "~> 2.7"
+
+gem "pry", "~> 0.14.2"
