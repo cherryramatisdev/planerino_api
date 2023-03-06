@@ -10,4 +10,6 @@ class MonthRepository
 
     year.month.insert_all(months)
   end
+
+  def find_by_id(id:) = Month.find(id)
 end
