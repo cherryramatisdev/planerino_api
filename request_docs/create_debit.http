@@ -1,0 +1,9 @@
+POST http://localhost:3000/debit
+Content-Type: application/json
+
+{
+    "title": "title2",
+    "price": 10,
+    "payer_id": 1,
+    "month_id": 1
+}
