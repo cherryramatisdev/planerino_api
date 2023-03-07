@@ -9,13 +9,22 @@ class DebitController < ApplicationController
   end
 
   def create
-    paid = params.permit(:paid)[:paid] ||= false
-    result = @create_debit_action.call(title: params.permit(:title)[:title], price: params.permit(:price)[:price],
-                                       paid:, payer_id: params.permit(:payer_id)[:payer_id],
-                                       month_id: params.permit(:month_id)[:month_id])
+    result = @create_debit_action.call(mount_debit_body(params_permit))
 
     return render json: { error: result[:error] }, status: result[:status] if result[:error]
 
     render json: result[:debit], status: result[:status]
+  end
+
+  private
+
+  def mount_debit_body(data)
+    paid = data[:paid] ||= false
+
+    { title: data[:title], price: data[:price], paid:, payer_id: data[:payer_id], month_id: data[:month_id] }
+  end
+
+  def params_permit
+    params.permit(:title, :price, :paid, :payer_id, :month_id)
   end
 end
