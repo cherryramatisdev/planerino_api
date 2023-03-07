@@ -1,0 +1,5 @@
+* Inbox
+** [2023-03-06 Mon 21:11] List methods that I need
+ 1. [X] List years
+ 2. [X] List months by year
+ 3. [X] List debits by month
