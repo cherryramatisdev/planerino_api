@@ -1,0 +1,6 @@
+POST http://localhost:3000/payer
+Content-Type: application/json
+
+{
+    "name": "Payer 1"
+}
