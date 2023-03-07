@@ -9,7 +9,6 @@ class DebitController < ApplicationController
   end
 
   def create
-    p "t #{params.permit(:paid)}"
     paid = params.permit(:paid)[:paid] ||= false
     result = @create_debit_action.call(title: params.permit(:title)[:title], price: params.permit(:price)[:price],
                                        paid:, payer_id: params.permit(:payer_id)[:payer_id],

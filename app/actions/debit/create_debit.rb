@@ -16,7 +16,6 @@ module Actions
       # @param payer_id Integer
       # @param month_id Integer
       def call(title:, price:, paid:, payer_id:, month_id:)
-        p "TESTE #{title} #{price} #{paid} #{payer_id} #{month_id}"
         payer = @payer_repository.find_by_id(id: payer_id)
         month = @month_repository.find_by_id(id: month_id)
         result = @debit_repository.create(title:, price:, paid:, payer:, month:)
