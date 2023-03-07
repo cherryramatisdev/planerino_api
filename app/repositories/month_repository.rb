@@ -12,4 +12,5 @@ class MonthRepository
   end
 
   def find_by_id(id:) = Month.find(id)
+  def list_by_year(year_id:) = Month.where(year_id:)
 end

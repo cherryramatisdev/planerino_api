@@ -13,4 +13,6 @@ class DebitRepository
 
     debit
   end
+
+  def list_by_month(month_id:) = Debit.where(month_id:)
 end

@@ -14,4 +14,5 @@ class YearRepository
   # @param id Integer
   # @return Year | NilClass
   def find_by_id(id:) = Year.find_by(id:)
+  def list_all = Year.all
 end

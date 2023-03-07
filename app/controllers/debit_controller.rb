@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 require_relative '../actions/debit/create_debit'
+require_relative '../actions/debit/list_debits_per_month'
 
 class DebitController < ApplicationController
   def initialize
     super
     @create_debit_action = Actions::Debit::CreateDebit.new
+    @list_debits_action = Actions::Debit::ListDebitsPerMonthAction.new
+  end
+
+  def index
+    render json: @list_debits_action.call(month_id: params.permit(:month_id)[:month_id])
   end
 
   def create
