@@ -6,8 +6,8 @@ class DebitRepository
   # @param paid Boolean
   # @param payer Payer
   # @param month Month
-  def create(title:, price:, paid:, payer:, month:)
-    debit = Debit.create(title:, price:, paid:, payer:, month:)
+  def create(title:, price:, paid:, payer_id:, month_id:)
+    debit = Debit.create(title:, price:, paid:, payer_id:, month_id:)
 
     return nil unless debit.valid?
 
